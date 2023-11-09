@@ -1,48 +1,48 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-plugins {
-    id("org.springframework.boot") version "3.1.4"
-    id("io.spring.dependency-management") version "1.1.3"
-    kotlin("jvm") version "1.9.0"
-    kotlin("plugin.jpa") version "1.9.0"
-    kotlin("plugin.spring") version "1.9.0"
-}
-
 allprojects {
-    group = "com.bokeh"
-    version = "0.0.1-SNAPSHOT"
+    group = Project.GROUP
+    version = Project.VERSION
 
     repositories {
         mavenCentral()
     }
 }
 
+plugins {
+    id(Plugins.SPRING_BOOT) version Version.SPRING_BOOT
+    id(Plugins.SPRING_DEPENDENCY_MANAGEMENT) version Version.SPRING_DEPENDENCY_MANAGEMENT
+    id(Plugins.KOTLIN_JVM) version Version.KOTLIN
+    id(Plugins.KOTLIN_PLUGIN_JPA) version Version.KOTLIN
+    id(Plugins.KOTLIN_PLUGIN_SPRING) version Version.KOTLIN
+}
+
 subprojects {
-    apply(plugin = "idea")
-    apply(plugin = "kotlin")
-    apply(plugin = "kotlin-spring")
-    apply(plugin = "kotlin-jpa")
-    apply(plugin = "kotlin-kapt")
-    apply(plugin = "kotlin-noarg")
-    apply(plugin = "kotlin-allopen")
-    apply(plugin = "org.springframework.boot")
-    apply(plugin = "io.spring.dependency-management")
+    apply(plugin = Plugins.IDEA)
+    apply(plugin = Plugins.KOTLIN)
+    apply(plugin = Plugins.KOTLIN_SPRING)
+    apply(plugin = Plugins.KOTLIN_JPA)
+    apply(plugin = Plugins.KOTLIN_KAPT)
+    apply(plugin = Plugins.KOTLIN_NOARG)
+    apply(plugin = Plugins.KOTLIN_ALLOPEN)
+    apply(plugin = Plugins.SPRING_BOOT)
+    apply(plugin = Plugins.SPRING_DEPENDENCY_MANAGEMENT)
 
     dependencies {
-        implementation("org.jetbrains.kotlin:kotlin-stdlib:1.9.0")
-        implementation("org.jetbrains.kotlin:kotlin-reflect:1.9.0")
-        annotationProcessor("org.springframework.boot:spring-boot-configuration-processor:3.1.4")
-        testImplementation("io.mockk:mockk:1.13.7")
-        testImplementation("com.ninja-squad:springmockk:4.0.2")
-        testImplementation("io.kotest:kotest-runner-junit5:5.6.0")
-        testImplementation("io.kotest:kotest-assertions-core:5.6.0")
-        testImplementation("io.kotest.extensions:kotest-extensions-spring:1.1.3")
-        testImplementation("org.springframework.boot:spring-boot-starter-test:3.1.4")
+        implementation(Dependencies.KOTLIN_STDLIB)
+        implementation(Dependencies.KOTLIN_REFLECT)
+
+        annotationProcessor(Dependencies.SPRING_BOOT_CONFIGURATION_PROCESSOR)
+
+        testImplementation(Dependencies.KOTEST_RUNNER_JUNIT5)
+        testImplementation(Dependencies.KOTEST_ASSERTIONS_CORE)
+        testImplementation(Dependencies.KOTEST_EXTENSIONS_SPRING)
+        testImplementation(Dependencies.SPRING_BOOT_STARTER_TEST)
     }
 
     java {
         toolchain {
-            languageVersion.set(JavaLanguageVersion.of(17))
+            languageVersion.set(JavaLanguageVersion.of(Version.JAVA))
         }
     }
 
@@ -55,7 +55,7 @@ subprojects {
     tasks.withType<KotlinCompile> {
         kotlinOptions {
             freeCompilerArgs += "-Xjsr305=strict"
-            jvmTarget = "17"
+            jvmTarget = Version.JAVA
         }
     }
 
