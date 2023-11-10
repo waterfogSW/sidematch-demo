@@ -8,4 +8,5 @@ bootJar.enabled = false
 
 dependencies {
     api("com.github.f4b6a3:ulid-creator:5.2.2")
+    api("org.springframework.boot:spring-boot-starter-validation:${Version.SPRING_BOOT}")
 }
