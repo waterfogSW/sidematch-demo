@@ -1,7 +1,7 @@
-package com.sidematch.domain.domain
+package com.sidematch.common.domain
 
 import com.github.f4b6a3.ulid.Ulid
-import com.sidematch.domain.util.UlidUtil
+import com.sidematch.common.util.UlidUtil
 import java.time.LocalDateTime
 
 abstract class Domain(
