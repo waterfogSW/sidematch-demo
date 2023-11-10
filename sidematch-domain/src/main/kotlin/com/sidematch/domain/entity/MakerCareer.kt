@@ -10,4 +10,4 @@ data class MakerCareer(
     private val startDate: LocalDateTime,
     private val endDateTime: LocalDateTime?,
     private val description: String,
-): Entity()
+) : Entity()

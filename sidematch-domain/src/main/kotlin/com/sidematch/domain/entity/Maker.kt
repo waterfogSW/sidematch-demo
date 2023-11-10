@@ -1,8 +1,8 @@
 package com.sidematch.domain.entity
 
 import com.github.f4b6a3.ulid.Ulid
-import com.sidematch.common.vo.URL
 import com.sidematch.common.entity.Entity
+import com.sidematch.common.vo.URL
 import com.sidematch.domain.enum.MakerPosition
 
 data class Maker(
