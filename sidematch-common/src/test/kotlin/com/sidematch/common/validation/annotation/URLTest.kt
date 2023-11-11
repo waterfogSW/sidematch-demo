@@ -7,7 +7,7 @@ import org.junit.jupiter.api.assertThrows
 class URLTest : DescribeSpec({
     describe("URL 어노테이션 적용") {
         data class Mock(
-            @field:URL
+            @field:ValidURL
             val url: String,
         ) {
             init {

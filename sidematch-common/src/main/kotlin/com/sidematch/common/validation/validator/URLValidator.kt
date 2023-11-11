@@ -1,13 +1,20 @@
 package com.sidematch.common.validation.validator
 
-import com.sidematch.common.validation.annotation.URL
+import com.sidematch.common.validation.annotation.ValidURL
 import jakarta.validation.ConstraintValidator
 import jakarta.validation.ConstraintValidatorContext
 
-class URLValidator : ConstraintValidator<URL, String> {
+class URLValidator : ConstraintValidator<ValidURL, String?> {
+    private var nullable: Boolean = false
+
+    override fun initialize(constraintAnnotation: ValidURL) {
+        nullable = constraintAnnotation.nullable
+    }
+
     override fun isValid(value: String?, context: ConstraintValidatorContext?): Boolean {
+
         if (value.isNullOrEmpty()) {
-            return false
+            return nullable
         }
         return try {
             java.net.URL(value)
