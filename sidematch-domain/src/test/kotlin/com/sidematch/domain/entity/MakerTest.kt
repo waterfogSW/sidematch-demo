@@ -87,11 +87,11 @@ class MakerTest : DescribeSpec({
             }
         }
 
-        context("[Failure] 관심사가 20자를 초과하면") {
+        context("[Failure] 관심사가 2000자를 초과하면") {
             it("예외를 발생시킨다.") {
                 // given
                 val name = "이름"
-                val interest = "1".repeat(21)
+                val interest = "1".repeat(2001)
 
                 // when, then
                 shouldThrow<IllegalArgumentException> { Maker.create(name, interest = interest) }
