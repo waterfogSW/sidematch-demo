@@ -3,7 +3,6 @@ package com.sidematch.domain.entity
 import com.github.f4b6a3.ulid.Ulid
 import com.sidematch.common.entity.Entity
 import com.sidematch.common.validation.annotation.ValidURL
-import com.sidematch.common.validation.validator.validate
 import com.sidematch.common.vo.URL
 import com.sidematch.domain.enum.MakerPosition
 import jakarta.validation.constraints.Size
@@ -41,7 +40,7 @@ data class Maker(
 ) : Entity() {
 
     init {
-        validate(this)
+        this.validateSelf(this::class.java)
     }
 
     companion object {

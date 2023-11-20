@@ -2,7 +2,6 @@ package com.sidematch.domain.entity
 
 import com.github.f4b6a3.ulid.Ulid
 import com.sidematch.common.entity.Entity
-import com.sidematch.common.validation.validator.validate
 import com.sidematch.domain.enum.ProjectCollaborationType
 import com.sidematch.domain.enum.ProjectType
 import jakarta.validation.constraints.Positive
@@ -38,7 +37,7 @@ data class Project(
 ) : Entity() {
 
     init {
-        validate(this)
+        this.validateSelf(this::class.java)
     }
 
     companion object {

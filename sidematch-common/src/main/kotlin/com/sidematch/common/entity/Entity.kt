@@ -8,4 +8,4 @@ abstract class Entity(
     private val id: Ulid? = UlidUtil.create(),
     private val createdAt: LocalDateTime = LocalDateTime.now(),
     private val updatedAt: LocalDateTime = LocalDateTime.now(),
-)
+): SelfValidating()

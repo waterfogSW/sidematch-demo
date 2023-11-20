@@ -1,7 +1,6 @@
 package com.sidematch.domain.entity
 
 import com.sidematch.common.entity.Entity
-import com.sidematch.common.validation.validator.validate
 import org.hibernate.validator.constraints.Length
 import java.time.LocalDateTime
 
@@ -20,8 +19,8 @@ data class MakerCareer(
 ) : Entity() {
 
     init {
-        validate(this)
-        validateIsCurrent()
+        this.validateSelf(this::class.java)
+        this.validateIsCurrent()
     }
 
     companion object {

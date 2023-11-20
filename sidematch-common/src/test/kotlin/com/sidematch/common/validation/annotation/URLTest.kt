@@ -1,7 +1,9 @@
 package com.sidematch.common.validation.annotation
 
-import com.sidematch.common.validation.validator.validate
+import com.sidematch.common.entity.SelfValidating
 import io.kotest.core.spec.style.DescribeSpec
+import jakarta.validation.ConstraintViolation
+import jakarta.validation.ConstraintViolationException
 import org.junit.jupiter.api.assertThrows
 
 class URLTest : DescribeSpec({
@@ -9,9 +11,9 @@ class URLTest : DescribeSpec({
         data class Mock(
             @field:ValidURL
             val url: String,
-        ) {
+        ): SelfValidating() {
             init {
-                validate(this)
+                this.validateSelf(this::class.java)
             }
         }
 
