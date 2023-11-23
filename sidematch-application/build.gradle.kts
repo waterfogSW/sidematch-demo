@@ -10,5 +10,5 @@ dependencies {
     implementation(project(":sidematch-common"))
     implementation(project(":sidematch-domain"))
 
-    implementation("org.springframework.boot:spring-boot")
+    implementation("org.springframework.boot:spring-boot:${Version.SPRING_BOOT}")
 }
