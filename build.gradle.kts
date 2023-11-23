@@ -38,6 +38,7 @@ subprojects {
         testImplementation(Dependencies.KOTEST_ASSERTIONS_CORE)
         testImplementation(Dependencies.KOTEST_EXTENSIONS_SPRING)
         testImplementation(Dependencies.SPRING_BOOT_STARTER_TEST)
+        testImplementation(Dependencies.MOCKK)
     }
 
     java {
